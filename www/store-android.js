@@ -1428,13 +1428,10 @@ store._validator = function(product, callback, isPrepared) {
 /// and in the callback `product.finish()` should be called.
 ///
 
-var initialRefresh = true;
-
 store.refresh = function() {
 
     store.trigger("refreshed");
-    if (initialRefresh) {
-        initialRefresh = false;
+    if (!store.ready()) {
         return;
     }
 
